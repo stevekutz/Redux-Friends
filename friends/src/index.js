@@ -4,7 +4,7 @@ import './index.css';
 import App from './components/App';
 // import * as serviceWorker from './serviceWorker';
 
-// import { logger } from "./logger";
+// import { logger } from "./logger";  // we don't use our custom built one here
 
 import rootReducer from "./reducers";
 import {Provider} from 'react-redux';
@@ -20,19 +20,17 @@ const composeEnhancers =
 // functions out of our action creators rather than returning actions
 const enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 
-//const middleWareStuff = applyMiddleware(thunk, logger);
-
 const store = createStore(rootReducer, enhancer);
 
 
-
+const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store = {store}>
     <App />
   </Provider>,
+//document.getElementById('root'));
+rootElement);
 
-
-document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
