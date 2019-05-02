@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import FriendList from './components/FriendList';
 // import * as serviceWorker from './serviceWorker';
 
 // import { logger } from "./logger";  // we don't use our custom built one here
 
 import rootReducer from "./reducers";
+
+
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import thunk from "redux-thunk";
@@ -26,7 +28,7 @@ const store = createStore(rootReducer, enhancer);
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store = {store}>
-    <App />
+    <FriendList />
   </Provider>,
 //document.getElementById('root'));
 rootElement);
