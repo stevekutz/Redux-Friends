@@ -1,7 +1,7 @@
 import {
   LOGIN_START,
-
-
+  LOGIN_RESOLVED,
+  
 
 
 } from "../actions";
@@ -24,6 +24,16 @@ export const friendsReducer = (state = initialState, action) => {
       }
     }
 
+
+    case LOGIN_RESOLVED: {
+      return {
+        ...state,
+        isLoggingIn: false
+
+      }
+
+
+    }
 
     default:
       return state;
