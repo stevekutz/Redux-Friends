@@ -5,6 +5,8 @@ import Login from "./Login";
 import FriendList from "./FriendList";
 import PrivateRoute from "./PrivateRoute";
 
+import "./App.css";
+
 function App() {
   return (
     <Router>
