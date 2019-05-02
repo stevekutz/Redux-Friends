@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import FriendList from './components/FriendList';
+import App from './components/App';
+
+
 // import * as serviceWorker from './serviceWorker';
 
 // import { logger } from "./logger";  // we don't use our custom built one here
@@ -28,7 +30,7 @@ const store = createStore(rootReducer, enhancer);
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store = {store}>
-    <FriendList />
+    <App />
   </Provider>,
 //document.getElementById('root'));
 rootElement);
