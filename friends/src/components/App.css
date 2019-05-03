@@ -21,3 +21,34 @@ a {
   padding: 6px;
   color: #204963;
 }
+
+.title {
+  border: 1px solid pink;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.friendContainer {
+  border: 2px solid red;
+  background-color: ivory;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.friendItem {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 2px auto;
+}
+
+h5, h6 {
+  padding: 4px;
+  margin: 0;
+}

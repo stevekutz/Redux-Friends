@@ -12,35 +12,24 @@ class FriendList extends Component {
 
   componentDidMount() {
     this.props.getFriends();
-
   }
 
 
-/*
-       {this.props.friends.map( (friend, index) => (
-          <div key={index}>
-            <h5><h5>{friend.name}</h5></h5>
-
-          </div>
-
-        ))}
-
- */
-
-
   render() {
-    return (
-      <div>
-        <h3> Redux Friends</h3>
-        {this.props.friends.friends.map( (friend, index) => (
-          <div key={index}>
-            <h5><h5>{friend.name}</h5></h5>
 
+    return (
+      <div className = "friendContainer">
+        <h3 className = "title"> Redux Friends</h3>
+        {this.props.friends.friends.map( (friend) => (
+          <div
+            className = "friendItem"
+            key={friend.id}>
+            <h5>Name: {friend.name}</h5>
+            <h5>Age: {friend.age}</h5>
+            <h6>email: {friend.email}</h6>
           </div>
 
         ))}
-
-
       </div>
 
     )
@@ -49,6 +38,7 @@ class FriendList extends Component {
 
 
 }
+
 
 const mapStateToProps = ({ friends, fetchingData }) => ({
   friends,
@@ -66,30 +56,3 @@ export default withRouter(
 
 
 );
-
-
-
-/*
-function FriendList() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default FriendList;
-*/
