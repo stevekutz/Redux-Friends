@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+li {
+  list-style: none;
+  margin-right: 6px;
+  color: #204963;
+}
+
+a {
+  text-decoration: none;
+  padding: 6px;
+  color: #204963;
+}
+
+.title {
+  border: 1px solid pink;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.friendContainer {
+  border: 2px solid red;
+  color: white;
+  background-color: ivory;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+
+}
+
+.friendItem {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 2px auto;
+}
+
+h5, h6 {
+  padding: 4px;
+  margin: 0;
+}
+form {
+  border: 1px solid green;
+  padding: 4px;
+  margin: 3px;
+}
+
+
+button {
+  border: 2px solid darkblue;
+  background: aliceblue;
+  margin: 2px;
+  border-radius: 3px;
+
+}
