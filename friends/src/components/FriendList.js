@@ -38,12 +38,16 @@ class FriendList extends Component {
   handleSubmit = e => {
     const {name, age,email} = this.state;
     e.preventDefault();
-    this.props.addFriend({name, age, email});
-    this.setState({
-      name: '',
-      age: '',
-      email: ''
-    });
+
+    { if(name && age && email) {
+      this.props.addFriend({name, age, email});
+      this.setState({
+        name: '',
+        age: '',
+        email: ''
+      });
+
+    }}
 
   };
 
