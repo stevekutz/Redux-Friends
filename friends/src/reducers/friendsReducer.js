@@ -3,7 +3,7 @@ import {
   LOGIN_RESOLVED,
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
-  FETCH_DATA_FAILURE,
+  FETCH_DATA_FAILURE, ADDING_FRIEND, ADD_FRIEND,
 
 
 } from "../actions";
@@ -52,8 +52,17 @@ export const friendsReducer = (state = initialState, action) => {
         error: action.payload
       };
 
-
-
+    case ADDING_FRIEND:
+      return {
+        ...state,
+        addingFriend: true,
+      };
+    case ADD_FRIEND:
+      return {
+        ...state,
+        addingFriend: false,
+        friends: action.payload,
+      };
 
 
     default:

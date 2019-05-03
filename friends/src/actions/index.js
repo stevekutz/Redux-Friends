@@ -74,5 +74,5 @@ export const addFriend = (friend) => dispatch =>{
     .catch(err =>{
       dispatch({type: ERROR, payload: err});
     })
-  
+
 };
