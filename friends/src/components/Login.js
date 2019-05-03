@@ -25,7 +25,7 @@ class Login extends React.Component {
     e.preventDefault();
     this.props
       .login(this.state.credentials) //credentials returned
-      // history upated
+      // history updtated
       .then(() => this.props.history.push("/protected"));
   };
 
