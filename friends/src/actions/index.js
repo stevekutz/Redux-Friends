@@ -6,11 +6,16 @@ export const LOGIN_RESOLVED = "LOGIN_RESOLVED";
 // create action types for getting data
 export const FETCH_DATA_START = "FETCH_DATA_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
-export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+//export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 
 //actions types for adding friend
 export const ADDING_FRIEND = "ADDING_FRIEND";
 export const ADD_FRIEND = "ADD_FRIEND";
+
+//actions for deleting friend
+export const DELETING_FRIEND = "DELETING_FRIEND";
+export const DELETE_FRIEND = "DELETE_FRIEND";
+
 
 // generic action type for any error
 export const ERROR = "ERROR";
@@ -54,17 +59,17 @@ export const getFriends = () => dispatch => {
       if (err.response.status === 403) {
         localStorage.removeItem("token");
       }
-      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response });
+      dispatch({ type: ERROR, payload: err.response });
     });
 };
 
 
 
-export const addFriend = (friend) => dispatch =>{
+export const addFriend = (friend) => dispatch => {
   dispatch({type: ADDING_FRIEND});
   axios
-    .post(`http://localhost:5000/api/friends`, friend,{
-      headers: { Authorization: localStorage.getItem("token") }
+    .post(`http://localhost:5000/api/friends`, friend,
+      {headers: { Authorization: localStorage.getItem("token") }
     })
 
     .then(res => {
@@ -78,4 +83,24 @@ export const addFriend = (friend) => dispatch =>{
     .catch(err =>{
       dispatch({type: ERROR, payload: err});
     })
+};
+
+export const deleteFriend = id => dispatch => {
+  dispatch({type: DELETING_FRIEND});
+  axios
+    .delete(`http://localhost:5000/api/friends/${id}`,
+      {headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: DELETE_FRIEND,
+        payload: res.data
+
+      });
+    })
+    .catch(err =>{
+      dispatch({type: ERROR, payload: err});
+    })
+
 };

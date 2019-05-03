@@ -3,8 +3,12 @@ import {
   LOGIN_RESOLVED,
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
-  FETCH_DATA_FAILURE, ADDING_FRIEND, ADD_FRIEND,
-
+//  FETCH_DATA_FAILURE,   // made one ERROR for all cases
+  ERROR,
+  ADDING_FRIEND,
+  ADD_FRIEND,
+  DELETING_FRIEND,
+  DELETE_FRIEND
 
 } from "../actions";
 
@@ -14,6 +18,7 @@ const initialState = {
   error: '',
   fetchingData: false,
   addingFriend: false,
+  deletingFriend: false,
 };
 
 
@@ -46,11 +51,8 @@ export const friendsReducer = (state = initialState, action) => {
         isLoggingIn: false,
         friends: action.payload,
       };
-    case FETCH_DATA_FAILURE:
-      return {
-        ...state,
-        error: action.payload
-      };
+ //   case FETCH_DATA_FAILURE:
+
 
     case ADDING_FRIEND:
       return {
@@ -64,7 +66,23 @@ export const friendsReducer = (state = initialState, action) => {
         friends: action.payload,
       };
 
+    case DELETING_FRIEND:
+      return {
+        ...state,
+        deletingFriend: true,
+      };
+    case DELETE_FRIEND:
+      return {
+        ...state,
+        deletingFriend: false,
+        friends: action.payload,
+      };
 
+    case ERROR:
+      return {
+        ...state,
+        error: action.payload
+      };
     default:
       return state;
 

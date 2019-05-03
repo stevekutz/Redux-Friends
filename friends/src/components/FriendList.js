@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import './App.css';
 
-import {getFriends, addFriend} from '../actions';
+import {getFriends, addFriend, deleteFriend} from '../actions';
 import {connect} from 'react-redux';
 
 import Loader from "react-loader-spinner";
@@ -47,6 +47,13 @@ class FriendList extends Component {
 
   };
 
+  handleDelete = (e, id) => {
+    e.preventDefault();
+    this.props.deleteFriend(id);
+
+
+  };
+
 
   render() {
 
@@ -59,6 +66,7 @@ class FriendList extends Component {
         )}
 
         <form onSubmit = {this.handleSubmit}>
+          <div className = "formInputs">
           <input
             value = {this.state.name}
             name = "name"
@@ -80,19 +88,27 @@ class FriendList extends Component {
             placeholder = "email"
             onChange={this.handleChange}
           />
-          <button>Add Friend</button>
+          </div>
+          <div className = "buttonContainer">
+            <button>Add Friend</button>
+
+          </div>
+
 
         </form>
 
 
         <h3 className = "title"> Redux Friends</h3>
-        {this.props.friends.friends.map( (friend) => (
+        {this.props.friends.friends.map( (friend,index) => (
           <div
             className = "friendItem"
-            key={friend.id}>
+            key={index}>
             <h5>Name: {friend.name}</h5>
             <h5>Age: {friend.age}</h5>
             <h6>email: {friend.email}</h6>
+            <button
+              onClick = { (e) => this.handleDelete(e, friend.id)}
+              >Delete friend, they owe me $ since forever</button>
           </div>
 
         ))}
@@ -106,16 +122,17 @@ class FriendList extends Component {
 }
 
 
-const mapStateToProps = ({ friends, fetchingData, addingFriend }) => ({
+const mapStateToProps = ({ friends, fetchingData, addingFriend, deletingFriend }) => ({
   friends,
   fetchingData,
   addingFriend,
+  deletingFriend,
 });
 
 export default withRouter(
   connect (
     mapStateToProps,
-    {getFriends, addFriend},
+    {getFriends, addFriend, deleteFriend} ,
 
 
   )(FriendList)
