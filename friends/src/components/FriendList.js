@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from '../logo.svg';
 import './App.css';
 
-import {getFriends} from '../actions';
+import {getFriends, addFriend} from '../actions';
 import {connect} from 'react-redux';
 
 import Loader from "react-loader-spinner";
@@ -10,7 +10,7 @@ import { withRouter } from "react-router-dom";
 
 class FriendList extends Component {
   state = {
-    newFriend: '',
+    newFriendName: '',
     newFriendAge: '',
     newFriendEmail: '',
   };
@@ -27,17 +27,19 @@ class FriendList extends Component {
   };
 
   handleSubmit = e => {
+    const {name, age,email} = this.state;
     e.preventDefault();
-
+    this.props.addFriend({name, age, email});
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
 
   };
 
 
-
-
   render() {
-
-
 
 
     return (
@@ -47,12 +49,29 @@ class FriendList extends Component {
           <Loader type="Ball-Triangle" color="#00BFFF" height="90" width="60" />
         )}
 
-        <form>
-
-
-
-
-
+        <form onSubmit = {this.handleSubmit}>
+          <input
+            value = {this.state.newFriendName}
+            name = "newFriendName"
+            type = "text"
+            placeholder = "name"
+            onChange={this.handleChange}
+          />
+          <input
+            value = {this.state.newFriendAge}
+            name = "newFriendAge"
+            type = "text"
+            placeholder = "age"
+            onChange={this.handleChange}
+          />
+          <input
+            value = {this.state.newFriendEmail}
+            name = "newFriendEmail"
+            type = "text"
+            placeholder = "email"
+            onChange={this.handleChange}
+          />
+          <button>Add Friend</button>
 
         </form>
 
@@ -81,13 +100,12 @@ class FriendList extends Component {
 const mapStateToProps = ({ friends, fetchingData }) => ({
   friends,
   fetchingData,
-
 });
 
 export default withRouter(
   connect (
     mapStateToProps,
-    {getFriends},
+    {getFriends, addFriend},
 
 
   )(FriendList)

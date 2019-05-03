@@ -59,20 +59,21 @@ export const getFriends = () => dispatch => {
 };
 
 
+
 export const addFriend = (friend) => dispatch =>{
   dispatch({type: ADDING_FRIEND});
   axios
-    .post(`http://localhost:5000/api/friend`, friend)
+    .post(`http://localhost:5000/api/friends`, friend)
     .then(res => {
       console.log(res);
       dispatch({
         type: ADD_FRIEND,
         // payload: res.data.data
-        payload: res.data
+        // payload: res.data
+        payload: friend
       });
     })
     .catch(err =>{
       dispatch({type: ERROR, payload: err});
     })
-
 };
