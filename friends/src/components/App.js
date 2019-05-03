@@ -20,6 +20,8 @@ import "./App.css";
  */
 
 
+//
+
 function App() {
   return (
     <Router>
@@ -33,7 +35,11 @@ function App() {
           </li>
         </ul>
       </div>
-      <Route path="/login" component={Login} />
+      <Route
+        path="/login"
+        // component={Login}
+        render={props => <Login {...props} isLoggingIn={false} />}
+      />
       <PrivateRoute exact path="/protected" component={FriendList} />
     </Router>
   );

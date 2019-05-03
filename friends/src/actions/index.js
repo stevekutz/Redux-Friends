@@ -43,8 +43,8 @@ export const login = creds => dispatch => {
 export const getFriends = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
   axios // NOTICE DIFFERENT ENDPOINT !!!!!
-    .get("http://localhost:5000/api/friends", {
-      headers: { Authorization: localStorage.getItem("token") }
+    .get("http://localhost:5000/api/friends",
+      {headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
       console.log(res);

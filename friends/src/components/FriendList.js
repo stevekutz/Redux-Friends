@@ -10,13 +10,6 @@ import { withRouter } from "react-router-dom";
 
 class FriendList extends Component {
 
- /*
-  state = {
-    newFriendName: '',
-    newFriendAge: '',
-    newFriendEmail: '',
-  };
-*/
   state = {
     name: '',
     age: '',
@@ -36,25 +29,23 @@ class FriendList extends Component {
   };
 
   handleSubmit = e => {
-    const {name, age,email} = this.state;
+    const {name, age, email} = this.state;
     e.preventDefault();
 
-    { if(name && age && email) {
+     if(name && age && email) {
       this.props.addFriend({name, age, email});
       this.setState({
         name: '',
         age: '',
         email: ''
       });
-
-    }}
+    }
 
   };
 
   handleDelete = (e, id) => {
     e.preventDefault();
     this.props.deleteFriend(id);
-
 
   };
 
@@ -63,7 +54,18 @@ class FriendList extends Component {
 
 
     return (
-      <div className = "friendContainer">
+      <div className = "friendContainer"
+
+        style={{
+        backgroundImage: "url(https://imgix.bustle.com/rehost/2016/9/13/b6ccc736-587b-437c-a29e-d60d9b77f5fe.jpg)",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        width: '90%',
+        margin: "5px auto",
+      }}>
+
+
 
         {this.props.fetchingData  && (
           <Loader type="Ball-Triangle" color="#00BFFF" height="90" width="60" />
