@@ -13,8 +13,7 @@ const initialState = {
   isLoggingIn: false,
   error: '',
   fetchingData: false,
-
-
+  addingFriend: false,
 };
 
 
@@ -46,13 +45,15 @@ export const friendsReducer = (state = initialState, action) => {
         fetchingData: false,
         isLoggingIn: false,
         friends: action.payload,
-
       };
     case FETCH_DATA_FAILURE:
       return {
         ...state,
         error: action.payload
       };
+
+
+
 
 
     default:

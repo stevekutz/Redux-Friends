@@ -7,6 +7,19 @@ import PrivateRoute from "./PrivateRoute";
 
 import "./App.css";
 
+
+// <Route path="/login" component={Login} />
+
+
+/*
+ <Route
+        path="/login"
+        // component={Login}
+        render={props => <Login {...props} isLoggingIn={false} />}
+      />
+ */
+
+
 function App() {
   return (
     <Router>
@@ -20,11 +33,7 @@ function App() {
           </li>
         </ul>
       </div>
-      <Route
-        path="/login"
-        // component={Login}
-        render={props => <Login {...props} isLoggingIn={false} />}
-      />
+      <Route path="/login" component={Login} />
       <PrivateRoute exact path="/protected" component={FriendList} />
     </Router>
   );

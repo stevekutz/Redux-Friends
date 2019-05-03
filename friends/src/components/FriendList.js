@@ -9,16 +9,54 @@ import Loader from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 
 class FriendList extends Component {
+  state = {
+    newFriend: '',
+    newFriendAge: '',
+    newFriendEmail: '',
+  };
 
   componentDidMount() {
     this.props.getFriends();
   }
 
+  // set up for adding another input field...
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({[e.target.name]: e.target.value})
+    //   this.setState({newTodo: e.target.value})
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+
+  };
+
+
+
 
   render() {
 
+
+
+
     return (
       <div className = "friendContainer">
+
+        {this.props.fetchingData  && (
+          <Loader type="Ball-Triangle" color="#00BFFF" height="90" width="60" />
+        )}
+
+        <form>
+
+
+
+
+
+
+        </form>
+
+
         <h3 className = "title"> Redux Friends</h3>
         {this.props.friends.friends.map( (friend) => (
           <div
