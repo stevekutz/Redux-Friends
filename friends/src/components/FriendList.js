@@ -9,11 +9,20 @@ import Loader from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 
 class FriendList extends Component {
+
+ /*
   state = {
     newFriendName: '',
     newFriendAge: '',
     newFriendEmail: '',
   };
+*/
+  state = {
+    name: '',
+    age: '',
+    email: '',
+  };
+
 
   componentDidMount() {
     this.props.getFriends();
@@ -51,22 +60,22 @@ class FriendList extends Component {
 
         <form onSubmit = {this.handleSubmit}>
           <input
-            value = {this.state.newFriendName}
-            name = "newFriendName"
+            value = {this.state.name}
+            name = "name"
             type = "text"
             placeholder = "name"
             onChange={this.handleChange}
           />
           <input
-            value = {this.state.newFriendAge}
-            name = "newFriendAge"
+            value = {this.state.age}
+            name = "age"
             type = "text"
             placeholder = "age"
             onChange={this.handleChange}
           />
           <input
-            value = {this.state.newFriendEmail}
-            name = "newFriendEmail"
+            value = {this.state.email}
+            name = "email"
             type = "text"
             placeholder = "email"
             onChange={this.handleChange}
@@ -97,9 +106,10 @@ class FriendList extends Component {
 }
 
 
-const mapStateToProps = ({ friends, fetchingData }) => ({
+const mapStateToProps = ({ friends, fetchingData, addingFriend }) => ({
   friends,
   fetchingData,
+  addingFriend,
 });
 
 export default withRouter(

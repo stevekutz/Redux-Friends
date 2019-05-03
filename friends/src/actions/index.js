@@ -63,14 +63,16 @@ export const getFriends = () => dispatch => {
 export const addFriend = (friend) => dispatch =>{
   dispatch({type: ADDING_FRIEND});
   axios
-    .post(`http://localhost:5000/api/friends`, friend)
+    .post(`http://localhost:5000/api/friends`, friend,{
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+
     .then(res => {
       console.log(res);
       dispatch({
         type: ADD_FRIEND,
-        // payload: res.data.data
-        // payload: res.data
-        payload: friend
+        payload: res.data
+
       });
     })
     .catch(err =>{
